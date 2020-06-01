@@ -67,7 +67,7 @@
 </head>
 
 <body>
-    <div class="flex-center position-ref full-height">
+    <div class="flex-center">
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
@@ -91,12 +91,16 @@
                 <a href="https://github.com/laravel/laravel">GitHub</a>
             </div>
 
-            @foreach($movies as $movie)
-            <h3> {{ $movie->title }}</h3>
-            @foreach($movie->actors as $actor)
-            <p> {{ $actor->name }} </P>
-            @endforeach
-            @endforeach
+            <div>
+                @foreach($movies as $movie)
+                <h3> {{ $movie->title }}</h3>
+                @auth
+                @foreach($movie->actors as $actor)
+                <p> {{ $actor->name }} </P>
+                @endforeach
+                @endauth
+                @endforeach
+            </div>
         </div>
     </div>
 </body>
