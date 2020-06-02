@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ActorController extends Controller
 {
@@ -14,8 +15,12 @@ class ActorController extends Controller
      */
     public function index()
     {
-        $actors = Actor::all();
-        return view('actors.index', ['actors' => $actors]);
+        if (Gate::allows('view-actors')) {
+            $actors = Actor::all();
+            return view('actors.index', ['actors' => $actors]);
+        } else {
+            return view('actors.index', ['err' => 'No access']);
+        }
     }
 
     public function oldActors()

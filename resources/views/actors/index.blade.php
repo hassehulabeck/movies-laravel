@@ -91,9 +91,17 @@
                 <a href="https://github.com/laravel/laravel">GitHub</a>
             </div>
 
-            @foreach($actors as $actor)
-            <p> {{ $actor->name }}</p>
-            @endforeach
+            @isset($err)
+
+                <p> {{ $err }}
+
+            @endisset
+
+            @isset ($actors)
+                @foreach($actors as $actor)
+                <p> {{ $actor->name }}</p>
+                @endforeach
+            @endisset                
         </div>
     </div>
 </body>

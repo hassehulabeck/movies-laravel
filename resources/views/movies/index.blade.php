@@ -93,12 +93,12 @@
 
             <div>
                 @foreach($movies as $movie)
-                <h3> {{ $movie->title }}</h3>
-                @auth
-                @foreach($movie->actors as $actor)
-                <p> {{ $actor->name }} </P>
-                @endforeach
-                @endauth
+                    <h3> {{ $movie->title }}</h3>
+                    @auth
+                        @foreach($movie->actors as $actor)
+                            <p> {{ $actor->name }} </P>
+                        @endforeach
+                    @endauth
                 @endforeach
             </div>
         </div>

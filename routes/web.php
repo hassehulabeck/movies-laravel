@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/movies', 'MovieController');
-Route::resource('/actors', 'ActorController')->middleware('auth');
+Route::resource('/actors', 'ActorController');
 Route::resource('/actors/oldies', 'ActorController@oldActors');
 
 Auth::routes();
