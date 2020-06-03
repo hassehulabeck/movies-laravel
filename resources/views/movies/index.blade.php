@@ -67,7 +67,7 @@
 </head>
 
 <body>
-    <div class="flex-center position-ref full-height">
+    <div class="flex-center ">
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
@@ -92,10 +92,15 @@
             </div>
 
             @foreach($movies as $movie)
-            <h3> {{ $movie->title }}</h3>
-            @foreach($movie->actors as $actor)
-            <p> {{ $actor->name }} </P>
-            @endforeach
+                <h3> {{ $movie->title }}</h3>
+                @auth
+                    @foreach($movie->actors as $actor)
+                        <p> {{ $actor->name }} </P>
+                    @endforeach
+                @endauth
+                @guest
+                        <p>Logga in för att se mer info</p>
+                @endguest
             @endforeach
         </div>
     </div>
