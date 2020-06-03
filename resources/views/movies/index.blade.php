@@ -93,14 +93,11 @@
 
             @foreach($movies as $movie)
                 <h3> {{ $movie->title }}</h3>
-                @auth
+                
                     @foreach($movie->actors as $actor)
                         <p> {{ $actor->name }} </P>
                     @endforeach
-                @endauth
-                @guest
-                        <p>Logga in för att se mer info</p>
-                @endguest
+                
             @endforeach
         </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ActorController extends Controller
 {
@@ -14,8 +15,14 @@ class ActorController extends Controller
      */
     public function index()
     {
-        $actors = Actor::all();
-        return view('actors.index', ['actors' => $actors]);
+        $response = Gate::inspect('view-actors');
+
+        if ($response->allowed()) {
+            $actors = Actor::all();
+            return view('actors.index', ['actors' => $actors]);
+        } else {
+            return view('actors.index', ['message' => $response->message() ?? "No access because not logged in"]);
+        }
     }
 
     public function oldActors()

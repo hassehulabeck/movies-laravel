@@ -17,9 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/actors/oldies', 'ActorController@oldActors');
+
 Route::resource('/movies', 'MovieController');
 Route::resource('/actors', 'ActorController');
-Route::resource('/actors/oldies', 'ActorController@oldActors');
 
 Auth::routes();
 
