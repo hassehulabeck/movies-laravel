@@ -14,6 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
+        Movie::class => MoviePolicy::class,
     ];
 
     /**
@@ -26,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('view-actors', function ($user) {
-            return $user->role('admin');
+            return $user->isAdmin();
         });
     }
 }
