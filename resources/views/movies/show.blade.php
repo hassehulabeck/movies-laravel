@@ -14,19 +14,16 @@
                         </div>
                     @endif
 
-                    @isset($errors)
-                        @foreach ($errors->all() as $message) 
-                            <p> {{ $message }}
+                    @isset($movie)
+                        <h3>{{ $movie->title }}</h3>
+                        <p>{{ $movie->year }}</p>
+
+                        <h3>Skådespelare:</h3>
+                        @foreach ($movie->actors as $actor)
+                            <p>{{ $actor->name }} ({{ $actor->birthday }})</p>
                         @endforeach
                     @endisset
-                    <form action="/movies" method="post">
-                    @csrf
-                    <label for="title">Titel</label>
-                    <input type="text" name="title">
-                    <label for="year">År</label>
-                    <input type="text" name="year">
-                    <input type="submit" value="Lägg till">
-                    </form>
+
                 </div>
             </div>
         </div>
@@ -35,4 +32,3 @@
 @endsection
 
  
-

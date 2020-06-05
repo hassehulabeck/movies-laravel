@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class MovieController extends Controller
 {
@@ -41,7 +43,24 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|unique:movies|max:255',
+            'year' => 'required|after:"1920-01-01"',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('movies/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $newMovie = new Movie;
+        $newMovie->title = $request->title;
+        $newMovie->year = $request->year;
+        $newMovie->created_at = now();
+        $newMovie->updated_at = now();
+        $newMovie->save();
+        return view('movies.index');
     }
 
     /**
@@ -52,7 +71,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+        return view('movies.show', ['movie' => $movie]);
     }
 
     /**

@@ -60,7 +60,7 @@ class ActorController extends Controller
      */
     public function show(Actor $actor)
     {
-        //
+        return view('actors.show', ['actor' => $actor]);
     }
 
     /**
