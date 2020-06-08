@@ -16,10 +16,18 @@ class CreateActorMovies extends Migration
         Schema::create('actor_movie', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('actor_id')->unsigned()->index();
-            $table->foreign('actor_id')->references('id')->on('actors');
+            $table->foreign('actor_id')
+                ->references('id')->on('actors')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->bigInteger('movie_id')->unsigned()->index();
-            $table->foreign('movie_id')->references('id')->on('movies');
+            $table->foreign('movie_id')
+                ->references('id')->on('movies')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
