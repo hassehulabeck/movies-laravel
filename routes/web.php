@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::get('/actors/oldies', 'ActorController@oldActors');
 
 Route::resource('/movies', 'MovieController');
-Route::resource('/actors', 'ActorController');
+Route::resource('/actors', 'ActorController')->middleware('logentry');
 
 Auth::routes();
 
