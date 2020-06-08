@@ -11,4 +11,6 @@
 8. Ställ in dina databasvärden i filen .env
 9. php artisan migrate
 10. php artisan db:seed
-
+11. php artisan serve
+12. Registrera en användare i din app
+13. I PHPMyAdmin, ändra role-värdet till admin på denna användare.
