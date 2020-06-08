@@ -15,14 +15,8 @@ class ActorController extends Controller
      */
     public function index()
     {
-        $response = Gate::inspect('view-actors');
-
-        if ($response->allowed()) {
-            $actors = Actor::all();
-            return view('actors.index', ['actors' => $actors]);
-        } else {
-            return view('actors.index', ['message' => $response->message() ?? "No access because not logged in"]);
-        }
+        $actors = Actor::all();
+        return view('actors.index', ['actors' => $actors]);
     }
 
     public function oldActors()
@@ -38,7 +32,7 @@ class ActorController extends Controller
      */
     public function create()
     {
-        //
+        return view('actors.create');
     }
 
     /**
@@ -49,7 +43,15 @@ class ActorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newActor = new Actor();
+        $newActor->name = $request->actorname;
+        $newActor->birthday = $request->birthday;
+        $newActor->country = $request->country;
+        $newActor->created_at = now();
+        $newActor->updated_at = now();
+        $newActor->save();
+        $actors = Actor::all();
+        return view('actors.index', ['actors' => $actors]);
     }
 
     /**
@@ -71,7 +73,7 @@ class ActorController extends Controller
      */
     public function edit(Actor $actor)
     {
-        //
+        return view('actors.edit', ['actor' => $actor]);
     }
 
     /**
@@ -83,7 +85,12 @@ class ActorController extends Controller
      */
     public function update(Request $request, Actor $actor)
     {
-        //
+        $actor->name = $request->actorname;
+        $actor->birthday = $request->birthday;
+        $actor->country = $request->country;
+        $actor->updated_at = now();
+        $actor->save();
+        return view('actors.show', ['actor' => $actor]);
     }
 
     /**
@@ -94,6 +101,8 @@ class ActorController extends Controller
      */
     public function destroy(Actor $actor)
     {
-        //
+        $actor->delete();
+        $actors = Actor::all();
+        return view('actors.index', ['actors' => $actors]);
     }
 }

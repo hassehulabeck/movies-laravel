@@ -10,4 +10,10 @@
                 <p>{{ $movie->title }} ({{ $movie->year }})</p>
             @endforeach
         @endisset
+
+        <form action="/actors/{{$actor->id}}" method="post">
+            @csrf
+            @method('delete')
+            <input type="submit" value="Ta bort skådespelaren">
+        </form>
     @endsection

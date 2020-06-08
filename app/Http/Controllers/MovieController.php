@@ -60,7 +60,8 @@ class MovieController extends Controller
         $newMovie->created_at = now();
         $newMovie->updated_at = now();
         $newMovie->save();
-        return view('movies.index');
+        $movies = Movie::all();
+        return view('movies.index', ['movies' => $movies]);
     }
 
     /**
