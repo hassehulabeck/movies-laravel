@@ -30,7 +30,7 @@ class MoviePolicy
      */
     public function view(User $user, Movie $movie)
     {
-        return $user->isAdmin();
+        return $user->higherThanRegular();
     }
 
     /**
@@ -41,7 +41,7 @@ class MoviePolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin();
+        return $user->higherThanRegular();
     }
 
     /**
@@ -53,7 +53,7 @@ class MoviePolicy
      */
     public function update(User $user, Movie $movie)
     {
-        return $user->isAdmin();
+        return $user->higherThanRegular();
     }
 
     /**

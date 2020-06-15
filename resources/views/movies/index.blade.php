@@ -93,9 +93,12 @@
 
             @foreach($movies as $movie)
                 <h3> {{ $movie->title }}</h3>
-                
+
+                    {{-- @foreach($movie->directors as $director)
+                        <p>Regissör: {{ $director->name}}</p>
+                    @endforeach --}}
                     @foreach($movie->actors as $actor)
-                        <p> {{ $actor->name }} </P>
+                        <p> {{ $actor->name }} </p>
                     @endforeach
                 
             @endforeach

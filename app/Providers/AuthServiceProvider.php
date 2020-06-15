@@ -28,9 +28,9 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('view-actors', function ($user) {
 
-            return $user->isAdmin()
+            return $user->higherThanRegular()
                 ? Response::allow()
-                : Response::deny('No access');
+                : Response::deny('No access to this view');
         });
     }
 }

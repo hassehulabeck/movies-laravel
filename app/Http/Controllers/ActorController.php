@@ -21,8 +21,13 @@ class ActorController extends Controller
 
     public function oldActors()
     {
-        $actors = Actor::where('birthday', '<', '1950-01-01')->get();
-        return view('actors.index', ['actors' => $actors]);
+        $response = Gate::inspect('view-actors');
+        if ($response->allowed()) {
+            $actors = Actor::where('birthday', '<', '1950-01-01')->get();
+            return view('actors.index', ['actors' => $actors]);
+        } else {
+            return view('actors.index', ['message' => $response->message()]);
+        }
     }
 
     /**

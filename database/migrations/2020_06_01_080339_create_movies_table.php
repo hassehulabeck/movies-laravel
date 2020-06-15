@@ -17,9 +17,16 @@ class CreateMoviesTable extends Migration
             $table->id();
             $table->string('title', 50)->unique();
             $table->year('year');
+            $table->bigInteger('director_id')->nullable()->unsigned()->index();
             $table->timestamps();
         });
+        Schema::table('movies', function (Blueprint $table) {
+            $table->foreign('director_id')
+                ->references('id')->on('directors');
+        });
     }
+
+
 
     /**
      * Reverse the migrations.

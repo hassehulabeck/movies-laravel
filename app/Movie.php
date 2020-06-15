@@ -10,4 +10,9 @@ class Movie extends Model
     {
         return $this->belongsToMany('App\Actor');
     }
+
+    public function director()
+    {
+        return $this->belongsTo('App\Director');
+    }
 }
