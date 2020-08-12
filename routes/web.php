@@ -25,3 +25,6 @@ Route::resource('/actors', 'ActorController')->middleware('logentry');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/bear', 'BearController@index');
+Route::get('/award', 'AwardController@index');

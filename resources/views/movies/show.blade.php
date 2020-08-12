@@ -10,10 +10,13 @@
                 <div class="card-body">
 
                     @isset($movie)
-                        <h3>{{ $movie->title }}</h3>
+                        <h2>{{ $movie->title }}</h2>
                         <p>{{ $movie->year }}</p>
 
-                        <h3>Skådespelare:</h3>
+                        <h3>Regissör</h3>
+                        <p>{{ $movie->director->name}}</p>
+
+                        <h3>Skådespelare</h3>
                         @foreach ($movie->actors as $actor)
                             <p>{{ $actor->name }} ({{ $actor->birthday }})</p>
                         @endforeach

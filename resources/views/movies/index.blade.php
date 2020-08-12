@@ -92,7 +92,7 @@
             </div>
 
             @foreach($movies as $movie)
-                <h3> {{ $movie->title }}</h3>
+                <h3><a href="movies/{{$movie->id}}"> {{ $movie->title }}</a></h3>
 
                     {{-- @foreach($movie->directors as $director)
                         <p>Regissör: {{ $director->name}}</p>

@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Director;
 use App\Movie;
 use Faker\Generator as Faker;
 
@@ -15,6 +16,7 @@ $factory->define(Movie::class, function (Faker $faker) {
 
     return [
         'title' => $faker->unique()->randomElement($titles),
-        'year' => $faker->year()
+        'year' => $faker->year(),
+        'director_id' => Director::all()->random()->id,
     ];
 });

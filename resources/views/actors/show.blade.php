@@ -10,7 +10,7 @@
                 <p>{{ $movie->title }} ({{ $movie->year }})</p>
             @endforeach
         @endisset
-
+        <a href="/actors/{{$actor->id}}/edit">Ändra skådespelare</a>
         <form action="/actors/{{$actor->id}}" method="post">
             @csrf
             @method('delete')

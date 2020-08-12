@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ActorSeeder::class,
+            DirectorSeeder::class,
             MovieSeeder::class,
         ]);
     }
