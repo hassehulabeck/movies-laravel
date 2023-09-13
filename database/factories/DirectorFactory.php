@@ -1,13 +1,25 @@
 <?php
-
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
+///** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Director;
+//use Faker\Factory;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Director::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name(),
-        'birthday' => $faker->dateTimeBetween($startDate = '-110 years', $endDate = '-25 years', $timezone = null),
-    ];
-});
+//$factory->define(Director::class, function (Faker $faker) {
+//    return [
+//        'name' => $faker->name(),
+//        'birthday' => $faker->dateTimeBetween($startDate = '-110 years', $endDate = '-25 years', $timezone = null),
+//    ];
+//});
+class DirectorFactory extends Factory
+{
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->name(),
+            'birthday' => $this->faker->dateTimeBetween($startDate = '-110 years', $endDate = '-25 years', $timezone = null),
+        ];
+    }
+}

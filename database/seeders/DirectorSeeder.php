@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use App\Director;
 use Illuminate\Database\Seeder;
 
 class DirectorSeeder extends Seeder
@@ -11,6 +14,9 @@ class DirectorSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Director::class, 25)->create();
+//        factory(App\Director::class, 25)->create();
+        Director::factory()
+            ->count(25)
+            ->create();
     }
 }
