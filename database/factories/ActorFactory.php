@@ -2,8 +2,6 @@
 namespace Database\Factories;
 ///** @var Factory $factory */
 
-use App\Actor;
-use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ActorFactory extends Factory

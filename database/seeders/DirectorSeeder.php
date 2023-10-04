@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Director;
+use App\Models\Director;
 use Illuminate\Database\Seeder;
 
 class DirectorSeeder extends Seeder

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +11,6 @@ class Actor extends Model
     use HasFactory;
     public function movies(): BelongsToMany
     {
-        return $this->belongsToMany('App\Movie');
+        return $this->belongsToMany('App\Models\Movie');
     }
 }

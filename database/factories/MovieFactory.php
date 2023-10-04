@@ -3,9 +3,7 @@ namespace Database\Factories;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Director;
-use App\Movie;
-use Faker\Generator as Faker;
+use App\Models\Director;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 //$factory->define(Movie::class, function (Faker $faker) {

@@ -2,10 +2,9 @@
 namespace Database\Factories;
 ///** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Director;
-//use Faker\Factory;
-use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
+
+//use Faker\Factory;
 
 //$factory->define(Director::class, function (Faker $faker) {
 //    return [
