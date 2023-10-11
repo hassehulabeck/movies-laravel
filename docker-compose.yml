@@ -29,6 +29,6 @@ services:
 
   composer:
     image: composer:1.9
-    command: ["composer", "dump-autoload"]
+    command: ["composer", "update"]
     volumes:
       - ./:/app

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Actor;
+use App\Models\Actor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -23,7 +23,8 @@ class ActorController extends Controller
     {
         $response = Gate::inspect('view-actors');
         if ($response->allowed()) {
-            $actors = Actor::where('birthday', '<', '1950-01-01')->get();
+            // $actors = Actor::where('birthday', '<', '1950-01-01')->get();
+            $actors = Actor::all()->where('birthday', "<", "1950-01-01");
             return view('actors.index', ['actors' => $actors]);
         } else {
             return view('actors.index', ['message' => $response->message()]);
@@ -62,7 +63,7 @@ class ActorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Actor  $actor
+     * @param  \App\Models\Actor  $actor
      * @return \Illuminate\Http\Response
      */
     public function show(Actor $actor)
@@ -73,11 +74,12 @@ class ActorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Actor  $actor
+     * @param  \App\Models\Actor  $actor
      * @return \Illuminate\Http\Response
      */
     public function edit(Actor $actor)
     {
+
         return view('actors.edit', ['actor' => $actor]);
     }
 
@@ -85,7 +87,7 @@ class ActorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Actor  $actor
+     * @param  \App\Models\Actor  $actor
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Actor $actor)
@@ -101,7 +103,7 @@ class ActorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Actor  $actor
+     * @param  \App\Models\Actor  $actor
      * @return \Illuminate\Http\Response
      */
     public function destroy(Actor $actor)
