@@ -10,3 +10,8 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+.idea/phpspec.xml
+.idea/movies-laravel.iml
+.idea/codeception.xml
+.idea/movies-laravel.iml
+.idea/movies-laravel.iml
