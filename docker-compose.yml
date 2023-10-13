@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+
+  # web:
+  #   image: nginx:1.17
+  #   ports:
+  #     - 80:80
+  #   volumes:
+  #     - ./:/var/www/myapp
+  #   depends_on:
+  #     - php
+  web:
+    image: php:7.3-fpm
+    # ports:
+    #   - 80:80
+    volumes:
+      - ./:/var/www/myapp
+    # command: ["php", "artisan serve"]
+#    command: php artisan serve
+
+  # php:
+  #   image: php:7.3-fpm
+  #   volumes:
+  #     - ./:/var/www/myapp
+  #     # - /var/www/docker-study.loc/recipe-05/docker/php.ini:/usr/local/etc/php/php.ini
+  #   depends_on:
+  #     - composer
+
+  composer:
+    image: composer:2
+    command: ["composer", "update"]
+    volumes:
+      - ./:/app

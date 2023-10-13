@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use App\Models\Actor;
 use Illuminate\Database\Seeder;
 
 class ActorSeeder extends Seeder
@@ -11,6 +14,9 @@ class ActorSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Actor::class, 20)->create();
+//        factory(App\Actor::class, 20)->create();
+        Actor::factory()
+            ->count(20)
+            ->create();
     }
 }

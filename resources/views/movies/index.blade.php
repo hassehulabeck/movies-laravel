@@ -100,7 +100,7 @@
                     @foreach($movie->actors as $actor)
                         <p> {{ $actor->name }} </p>
                     @endforeach
-                
+
             @endforeach
         </div>
     </div>
